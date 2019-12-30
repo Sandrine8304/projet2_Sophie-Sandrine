@@ -6,6 +6,6 @@ const ProfSchema = new Schema({
   photo: String
 });
 
-const Prof = mongoose.model('Cours', ProfSchema);
+const Prof = mongoose.model('Prof', ProfSchema);
 
 module.exports = Prof;

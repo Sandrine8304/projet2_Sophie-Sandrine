@@ -10,6 +10,6 @@ const CoursSchema = new Schema({
   duree: {type: Schema.Types.ObjectId, ref: 'Tarif'}
 });
 
-const Famille = mongoose.model('Cours', CoursSchema);
+const Cours = mongoose.model('Cours', CoursSchema);
 
 module.exports = Cours;

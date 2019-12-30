@@ -6,6 +6,6 @@ const TarifSchema = new Schema({
   montant: Number
 });
 
-const Tarif = mongoose.model('Cours', TarifSchema);
+const Tarif = mongoose.model('Tarif', TarifSchema);
 
 module.exports = Tarif;

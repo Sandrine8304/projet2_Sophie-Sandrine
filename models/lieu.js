@@ -6,6 +6,6 @@ const LieuSchema = new Schema({
   adresse: String
 });
 
-const Famille = mongoose.model('Cours', LieuSchema);
+const Lieu = mongoose.model('Lieu', LieuSchema);
 
 module.exports = Lieu;
