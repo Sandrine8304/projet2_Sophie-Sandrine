@@ -1,0 +1,36 @@
+<h1>INSCRIPTION</h1>
+
+<form action="/signup" method="post">
+  <p>
+    <label for="username">Identifiant/Pseudo: </label>
+    <input type="text" name="username">    
+  </p>
+  
+  <p>
+    <label for="nom">Nom de famille: </label>
+    <input type="text" name="nom">    
+  </p>
+
+  <p>
+    <label for="email">Adresse mail: </label>
+    <input type="text" name="email">    
+  </p>
+
+  <p>
+    <label for="password">Mot de passe: </label>
+      <input type="password" name="password">
+  </p>
+
+  <p>
+    <label for="password">Confirmation du mot de passe: </label> 
+      <input type="password" name="password">
+  </p>
+
+  {{#if errorMessage}}
+  <div class="error-message">{{errorMessage}}</div>
+  {{/if}}
+
+  <a href="/login">J'AI DEJA UN COMPTE</a>
+
+  <button type="submit">INSCRIPTION</button>
+</form>

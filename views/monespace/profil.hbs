@@ -1,0 +1,25 @@
+<h1>MON PROFIL</h1>
+
+<form action="/profil" method="get"></form>
+<p>
+    <label for="username">Identifiant/Pseudo: </label>
+    <input type="text" name="username" value="{{req.user.username}}">    
+  </p>
+  
+  <p>
+    <label for="nom">Nom de famille: </label>
+    <input type="text" name="nom" value="{{req.user.nom}}">    
+  </p>
+
+  <p>
+    <label for="email">Adresse mail: </label>
+    <input type="text" name="email" value="{{req.user.email}}">    
+  </p>
+
+  <p>
+    <label for="password">Mot de passe: </label>
+      <input type="password" name="password" value="{{req.user.password}}">
+  </p>
+
+    <a href="/edit-profil">MODIFIER PROFIL</a>
+</form>

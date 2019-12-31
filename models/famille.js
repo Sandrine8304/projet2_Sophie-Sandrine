@@ -17,7 +17,7 @@ const FamilleSchema = new Schema({
       nom: String,
       dateNaissance: Date,
       photoAdherent: String,
-      cours1: {type: Schema.Types.ObjectId, ref: 'Cours'}, //modif pour faciliter ajouter un field par cours
+      cours1: {type: Schema.Types.ObjectId, ref: 'Cours'}, //modif pour ajouter des fields par cours
       cours2: {type: Schema.Types.ObjectId, ref: 'Cours'},
       cours3: {type: Schema.Types.ObjectId, ref: 'Cours'}
     }
@@ -26,8 +26,8 @@ const FamilleSchema = new Schema({
   timestamps: true
 });
 
-const Famille = mongoose.model('Famille', FamilleSchema);
+const User = mongoose.model('User', FamilleSchema); //User à la place de Famille
 
-module.exports = Famille;
+module.exports = User;
 
 
