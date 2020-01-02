@@ -39,7 +39,7 @@ const app = express();
 app.use(session({
   secret: "projet2-les-trembles",
   store: new MongoStore( { mongooseConnection: mongoose.connection }),
-  resave: false, // ou mettre true??
+  resave: true, // ou mettre FALSE??
   saveUninitialized: true,
 }));
 
