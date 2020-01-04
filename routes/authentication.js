@@ -70,7 +70,6 @@ router.post("/signup", (req, res, next) => {  //uploadCloud.single('photo')
 
 
 //Login process
-
 router.get('/login', (req, res) => {
   res.render('authentication/login', { message: req.flash('error')});
 });
@@ -94,6 +93,16 @@ router.get("/mon-accueil", (req, res) => {
   res.render("authentication/mon-accueil", { user: req.user });
 });
 
+//Profil (private page)
+router.get("/profil", (req, res) => {
+  if (!req.user) {
+    res.redirect('/login'); // not logged-in
+    return;
+  }
+
+  // ok, req.user is defined
+  res.render("authentication/profil", { user: req.user });
+});
 
 
 //Log out
