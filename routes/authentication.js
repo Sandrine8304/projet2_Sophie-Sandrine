@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const passport = require('passport');
+const ensureLogin = require("connect-ensure-login");
 const User = require('../models/famille.js'); // user = famille
 
 const bcrypt = require("bcryptjs");
@@ -74,41 +75,33 @@ router.get('/login', (req, res) => {
   res.render('authentication/login', { message: req.flash('error')});
 });
 
+
 router.post('/login', passport.authenticate('local', {
-  successRedirect : 'monespace/mon-accueil',
+  successRedirect : 'authentication/mon-accueil',
   failureRedirect : '/login',
   failureFlash : true
 }));
 
-// router.post('/login', (req, res, next) => {
-//   passport.authenticate("local", (err, theUser, failureDetails) => {
-//     if (err) {
-//       // Something went wrong authenticating user
-//       return next(err);
-//     }
-  
-//     if (!theUser) {
-//       // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
-//       res.render('authentication/login', {errorMessage: 'Wrong password or username'}); 
-//       return;
-//     }
 
-//     // save user in session: req.user
-//     req.login(theUser, (err) => {
-//       if (err) {
-//         // Session save went bad
-//         return next(err);
-//       }
+//Routes for mon-accueil (private page)
+router.get("/mon-accueil", (req, res) => {
+  if (!req.user) {
+    res.redirect('/login'); // not logged-in
+    return;
+  }
 
-//       // All good, we are now logged in and `req.user` is now set
-//       res.redirect('monespace/mon-accueil');
-//     });
-//   })(req, res, next);
-// });
+  // ok, req.user is defined
+  res.render("authentication/mon-accueil", { user: req.user });
+});
 
+
+
+//Log out
 router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
+
+
 
 module.exports = router;

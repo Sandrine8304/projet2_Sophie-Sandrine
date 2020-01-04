@@ -115,8 +115,7 @@ const index = require('./routes/index');
 app.use('/', index);
 const authentication = require('./routes/authentication');
 app.use('/', authentication);
-const monespace = require('./routes/monespace');
-app.use('/', monespace);
+
 
 
 module.exports = app;
