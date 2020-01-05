@@ -1,32 +1,27 @@
 <h1>MON PROFIL</h1>
 
-<form action="/profil" method="get"></form>
-  <p>
-    <label for="username">Identifiant/Pseudo: </label>
-    <input type="text" name="username" value="{{user.username}}">    
-  </p>
+<p>
+  Identifiant/Pseudo: {{user.username}} 
+</p>
   
-  <p>
-    <label for="nom">Nom de famille: </label>
-    <input type="text" name="nom" value="{{user.nom}}">    
-  </p>
+<p>
+  Nom de famille: {{user.nom}}   
+</p>
 
-  <p>
-    <label for="email">Adresse mail: </label>
-    <input type="text" name="email" value="{{user.email}}">    
-  </p>
+<p>
+  Adresse mail: {{user.email}}    
+</p>
 
-  <p>
-    <label for="password">Mot de passe: </label>
-      <input type="password" name="password" value="{{user.password}}">
-  </p>
+<p>
+  Mot de passe: {{user.password}}
+</p>
 
-  <ul>
-    {{#each adherent}}
-      <li>Adhérent: {{prenom}}</li>
-    {{/each}}
-  </ul>
+<ul>
+  {{#each user.adherent}}
+    <li>Adhérent: {{this.prenom}}</li>
+  {{/each}}
+</ul>
 
   <a href="/edit-profil">MODIFIER PROFIL</a>
-
+  <a href="/mon-accueil">ACCUEIL</a>
 </form>

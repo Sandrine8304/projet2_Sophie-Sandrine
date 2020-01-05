@@ -76,16 +76,16 @@ router.get('/login', (req, res) => {
 
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect : 'authentication/mon-accueil',
+  successRedirect : '/mon-accueil',
   failureRedirect : '/login',
   failureFlash : true
 }));
 
 
-//Routes for mon-accueil (private page)
+//Routes pour mon-accueil (private page)
 router.get("/mon-accueil", (req, res) => {
   if (!req.user) {
-    res.redirect('/login'); // not logged-in
+    res.redirect('authentication/login'); // not logged-in
     return;
   }
 
@@ -96,12 +96,57 @@ router.get("/mon-accueil", (req, res) => {
 //Profil (private page)
 router.get("/profil", (req, res) => {
   if (!req.user) {
-    res.redirect('/login'); // not logged-in
+    res.redirect('authentication/login'); // not logged-in
     return;
   }
 
   // ok, req.user is defined
   res.render("authentication/profil", { user: req.user });
+});
+
+//Editer Profil (private page)
+router.get("/edit-profil", (req, res) => {
+  if (!req.user) {
+    res.redirect('authentication/login'); // not logged-in
+    return;
+  }
+
+  // ok, req.user is defined
+  res.render("authentication/edit-profil", { user: req.user });
+});
+
+router.post("/edit-profil", (req, res, next) => {
+  // Encrypt the password
+  const salt = bcrypt.genSaltSync(bcryptSalt);
+  const hashPass = bcrypt.hashSync(req.body.password, salt);
+
+  if (req.user) {
+  User.updateOne({ _id: req.body._id }, { $set : {
+    username: req.body.username,
+    name: req.body.name,
+    password: hashPass,
+    nom: req.body.nom,
+    adresse: req.body.adresse,
+    telephone1: req.body.telephone1,
+    telephone2: req.body.telephone2,
+    telephone3: req.body.telephone3,
+  }})
+    .then(user => res.redirect('/mon-accueil'))
+    .catch(err => next(err))
+  ;
+  }
+});
+
+
+//Absence adherent (private page)
+router.get("/absence", (req, res) => {
+  if (!req.user) {
+    res.redirect('authentication/login'); // not logged-in
+    return;
+  }
+
+  // ok, req.user is defined
+  res.render("authentication/absence", { user: req.user });
 });
 
 
