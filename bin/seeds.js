@@ -6,6 +6,12 @@ const Lieu = require('../models/lieu.js');
 const Tarif = require('../models/tarif.js');
 
 
+const bcrypt = require("bcryptjs");
+const bcryptSalt = 10;
+const salt = bcrypt.genSaltSync(bcryptSalt);
+
+
+
 mongoose.connect('mongodb://localhost/espace-famille', {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
   .then(() => {
     console.log('🔌 Connected to Mongo!');
@@ -207,7 +213,7 @@ const p4 = coursDatas.forEach(cour => {
 var famillesDatas = [
   { 
     username: 'FERREIRA',
-    password: 'fakepwd',
+    password: bcrypt.hashSync('Password', salt),
     modifPwd: true,
     nom: 'DA SILVA',
     adresse: {
@@ -257,7 +263,7 @@ var famillesDatas = [
     
   {
     username: 'MARTIN',
-    password: 'fakepwd',
+    password: bcrypt.hashSync('Password', salt),
     modifPwd: true,
     nom: 'MARTIN',
     adresse: {
@@ -289,7 +295,7 @@ var famillesDatas = [
     
   { 
     username: 'DUPOND',
-    password: 'fakepwd',
+    password: bcrypt.hashSync('Password', salt),
     modifPwd: true,
     nom: 'DUPOND',
     adresse: {
@@ -339,7 +345,7 @@ var famillesDatas = [
     
   {
     username: 'JAOUANI',
-    password: 'fakepwd',
+    password: bcrypt.hashSync('Password', salt),
     modifPwd: true,
     nom: 'JAOUANI',
     adresse: {
@@ -371,7 +377,7 @@ var famillesDatas = [
 
   { 
     username: 'SUNDI',
-    password: 'fakepwd',
+    password: bcrypt.hashSync('Password', salt),
     modifPwd: true,
     nom: 'SUNDI',
     adresse: {
