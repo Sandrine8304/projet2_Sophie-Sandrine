@@ -6,8 +6,7 @@
     <input type="text" name="id" value="{{user._id}}">    
   </p> --}}
   <p>
-    <label for="username">Identifiant/Pseudo: </label>
-    <input type="text" name="username" value="{{user.username}}">    
+    Identifiant/Pseudo: {{user.username}}    
   </p>
   
   <p>
@@ -21,9 +20,24 @@
   </p>
 
   <p>
+    <label for="telephone1">Téléphone 1: </label>
+    <input type="text" name="telephone1" value="{{user.telephone1.numero}}">    
+  </p>
+
+  <p>
+    <label for="telephone2">Téléphone 2: </label>
+    <input type="text" name="telephone2" value="{{user.telephone2.numero}}">    
+  </p>
+
+  <p>
+    <label for="telephone3">Téléphone 3: </label>
+    <input type="text" name="telephone3" value="{{user.telephone3.numero}}">    
+  </p>
+
+  {{!-- <p>
     <label for="password">Mot de passe: </label>
       <input type="password" name="password" value="{{user.password}}">
-  </p>
+  </p> --}}
 
   {{!-- <p>
     Adresse :

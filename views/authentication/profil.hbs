@@ -13,15 +13,25 @@
 </p>
 
 <p>
-  Mot de passe: {{user.password}}
+  téléphone 1: {{user.telephone1.numero}}    
 </p>
+
+<p>
+  téléphone 2: {{user.telephone2.numero}}    
+</p>
+
+<p>
+  téléphone 3: {{user.telephone3.numero}}    
+</p>
+
 
 <ul>
   {{#each user.adherent}}
-    <li>Adhérent: {{this.prenom}}</li>
+    <li>Adhérent: {{this.prenom}}  Cours :{{this.cours}}</li>
   {{/each}}
 </ul>
 
   <a href="/edit-profil">MODIFIER PROFIL</a>
+  <a href="/modifPwd">MODIFIER LE MOT DE PASSE</a>
   <a href="/mon-accueil">ACCUEIL</a>
 </form>
